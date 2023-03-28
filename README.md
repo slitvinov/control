@@ -1,4 +1,4 @@
-<h1> References
+<h1>References</h1>
 
 1. Dyer, P., & McReynolds, S. R. (1970). The computation and theory of
 optimal control (No. 629.8312 D9). <br/>
