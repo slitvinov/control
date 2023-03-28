@@ -1,0 +1,10 @@
+L0: sin(al)^2 * cos(al);
+define(L(al), L0);
+define(La(al), diff(L0, al));
+define(Laa(al), -diff(L0, al, 2));
+
+al: 0.0001;
+ep: 1;
+alp: al - ep * La(al)/Laa(al);
+L(alp) - L(al);
+draw2d(explicit(L('al), 'al, 0, %pi));

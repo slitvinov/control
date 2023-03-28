@@ -1,0 +1,3 @@
+L: sin(al)^2 * cos(al);
+La: diff(L, al);
+find_root(La, al, 0.5, 1.5) / %pi * 180, numer;
