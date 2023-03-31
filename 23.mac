@@ -1,0 +1,7 @@
+J: 1 - a[1]^2 - a[2]^2;
+M: a[1] + a[2] - 4;
+Js: J + la * M;
+eq: [diff(Js, a[1]), diff(Js, a[2]), diff(Js, la)];
+linsolve(eq, [a[1], a[2], la]);
+Ma: [diff(M, a[1]), diff(M, a[2])];
+
