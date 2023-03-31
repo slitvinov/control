@@ -1,14 +1,16 @@
 L: - 100 * (al[1] - al[0]**2)**2 - (1 - al[0])**2;
 
-D: [diff(L, al[0]), diff(L, al[1])];
-
-/*
-H11: diff(diff(L, al[0]), al[0]);
-H12: diff(diff(L, al[0]), al[1]);
-H22: diff(diff(L, al[1]), al[1]);
-*/
+xx: diff(diff(L, al[0]), al[0]);
+xy: diff(diff(L, al[0]), al[1]);
+yy: diff(diff(L, al[1]), al[1]);
 
 L2: matrix(['L2xx, 'L2xy], ['L2xy, 'L2yy]);
 D: determinant(L2);
 
-D * invert(L2) . [L1x, L1y], factor;
+delta: D * L2^^(-1) .  [L1x, L1y], factor;
+
+/*
+load("pdiff");
+taylor(f('x, 'y), ['x, 'y], ['x0, 'y0], 2); */
+
+
