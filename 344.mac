@@ -1,0 +1,23 @@
+eq0: create_list(x1[i + 1] = x1[i] + h[i] * a[i] * u[i], i, 0, 4);
+eq1: create_list(x2[i + 1] = x2[i] + h[i] * x1[i] + 1/2 * h[i]^2 * a[i] * u[i], i, 0, 4);
+
+J1: la * (x1[5]^2 + x2[5]^2) + sum(ga * h[i] * u[i]^2, i, 0, 4);
+J2: la * (x1[5]^2 + x2[5]^2) + sum((x1[i]^2 + x2[i]^2 + ga * u[i]^2) * h[i], i, 0, 4);
+
+p0: [ga = 100, la = 39, x1[0] = 3, x2[0] = 0.03];
+p1: [h[0] = 1, h[1] = 1, h[2] = 1, h[3] = 1, h[4] = 35];
+p2: [a[0] = 1, a[1] = 1, a[2] = 1, a[3] = 1, a[4] = 0];
+
+
+eq: append(eq0, eq1);
+v0: create_list(x1[i], i, 1, 5);
+v1: create_list(x2[i], i, 1, 5);
+v: append(v0, v1);
+so: linsolve(eq, v);
+
+Js: J1, so, p0, p1, p2, p3;
+
+dJ: create_list(diff(Js, u[i]), i, 0, 4);
+soj: linsolve(dJ, create_list(u[i], i, 0, 4)), float;
+
+
