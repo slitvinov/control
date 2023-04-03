@@ -15,7 +15,7 @@ def Laa(al):
     yy = -200
     return xx, xy, yy
 
-al = 1.2, 1
+al = -1.2, 1
 i = 0
 J = L(al)
 while i < 23:
@@ -24,7 +24,7 @@ while i < 23:
     L2xx, L2xy, L2yy = Laa(al)
     D = L2xx*L2yy-L2xy**2
     delta = [(L1x*L2yy-L1y*L2xy)/D, -(L1x*L2xy-L1y*L2xx)/D]
-    while i < 10:
+    while True:
         if L2xx < 0 and D > 0:
             alp = [al - ep * delta for al, delta in zip(al, delta)]
         else:
