@@ -4,7 +4,7 @@ eq1: create_list(x2[i + 1] = x2[i] + h[i] * x1[i] + 1/2 * h[i]^2 * a[i] * u[i], 
 J1: la * (x1[5]^2 + x2[5]^2) + sum(ga * h[i] * u[i]^2, i, 0, 4);
 J2: la * (x1[5]^2 + x2[5]^2) + sum((x1[i]^2 + x2[i]^2 + ga * u[i]^2) * h[i], i, 0, 4);
 
-p0: [ga = 100, la = 39, x1[0] = 3, x2[0] = 0.03];
+p0: [ga = 39, la = 100, x1[0] = 0.3, x2[0] = 0.03];
 p1: [h[0] = 1, h[1] = 1, h[2] = 1, h[3] = 1, h[4] = 35];
 p2: [a[0] = 1, a[1] = 1, a[2] = 1, a[3] = 1, a[4] = 0];
 
@@ -21,3 +21,9 @@ dJ: create_list(diff(Js, u[i]), i, 0, 4);
 soj: linsolve(dJ, create_list(u[i], i, 0, 4)), float;
 
 
+[x1[1], x2[1], u[1]], so, soj, p0, p1, p2;
+
+/*
+Fx: matrix([1, 0], [h[i], 1]);
+Fu: matrix([h[i] * a[i]], [1/2*h[i]^2 * a[i]]);
+*/
